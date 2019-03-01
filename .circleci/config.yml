@@ -41,6 +41,8 @@ jobs:
     working_directory: ~/repo/deploy
 
     steps:
+      - checkout
+      
       - run:
           command: |
             sudo pip install -r requirements.txt
