@@ -33,6 +33,11 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "src/package.json" }}
 
+      - save_cache:
+          key: v1-repo-{{ .Revision }}
+          paths:
+            - ~/repo
+
   deploy:
     docker:
       # specify the version you desire here
@@ -41,8 +46,10 @@ jobs:
     working_directory: ~/repo/deploy
 
     steps:
-      - checkout
-      
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Revision }}
+
       - run:
           command: |
             sudo pip install -r requirements.txt
