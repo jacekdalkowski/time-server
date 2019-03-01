@@ -12,7 +12,9 @@ module.exports = class TimeController {
   }
 
   getTime(req, res, next) {
-    res.json(this.time);
+    res.json({
+      time: moment(this.time).format()
+    });
   }
 
   setTime(req, res, next) {
