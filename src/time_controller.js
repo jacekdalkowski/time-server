@@ -1,6 +1,7 @@
 'use strict';
 
 import moment from 'moment';
+import restifyErrors from 'restify-errors';
 
 module.exports = class TimeController {
 
