@@ -20,7 +20,7 @@ module.exports = class TimeController {
   setTime(req, res, next) {
     const inputTimeString = req.body.time;
     if (moment(inputTimeString, moment.ISO_8601).isValid()) {
-      this.time = moment(inputTimeString).toDate();
+      this.time = moment.utc(inputTimeString);
       res.json({
         time: moment(this.time).format()
       });
